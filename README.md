@@ -4,6 +4,7 @@ This is a simple tool to manipulate Sony PSP(tm) PRX files. Prxtool can:
 
 * output an IDC file which can be used with IDA Pro
 * output an ELF file
+* output a Radare2 script file to be used by r2
 * disassemble PRX files into a pretty printed format
 
 Installation
@@ -18,6 +19,15 @@ To compile `prxtool`, run:
 You can install it by running:
 
     $ [sudo] make install
+
+You can load the radare2 script from r2 as such:
+	$ r2 <your bin>
+	[0x00000000] . <your symbol file>
+
+Modifications from the original
+-------------------------------
+* Added a --r2out / -2 option to output a radare2 script
+* Added a NidNames file containing all nids scraped from PPSSPP
 
 License
 -------
