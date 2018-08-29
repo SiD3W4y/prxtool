@@ -30,6 +30,7 @@ Modifications from the original
 -------------------------------
 * Added a --r2out / -2 option to output a radare2 script
 * Added a NidNames file containing all nids scraped from PPSSPP
+* This will try to resolve the nid names from the numbers if possible
 
 License
 -------
