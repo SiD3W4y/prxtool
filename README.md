@@ -21,8 +21,10 @@ You can install it by running:
     $ [sudo] make install
 
 You can load the radare2 script from r2 as such:
+```
 	$ r2 <your bin>
 	[0x00000000] . <your symbol file>
+```
 
 Modifications from the original
 -------------------------------
