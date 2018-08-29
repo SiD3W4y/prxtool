@@ -13,6 +13,7 @@
 #include "SerializePrxToIdc.h"
 #include "SerializePrxToXml.h"
 #include "SerializePrxToMap.h"
+#include "SerializePrxToR2.h"
 #include "ProcessPrx.h"
 #include "output.h"
 #include "getargs.h"
@@ -35,6 +36,7 @@ enum OutputMode
 	OUTPUT_DISASM  = 12,
 	OUTPUT_XMLDB = 13,
 	OUTPUT_ENT = 14,
+	OUTPUT_R2 = 15
 };
 
 static char **g_ppInfiles;
@@ -98,6 +100,8 @@ int do_xmldb(const char *arg)
 static struct ArgEntry cmd_options[] = {
 	{"output", 'o', ARG_TYPE_STR, ARG_OPT_REQUIRED, (void*) &g_pOutfile, 0, 
 		"outfile : Outputfile. If not specified uses stdout"},
+	{"r2out", '2', ARG_TYPE_INT, ARG_OPT_NONE, (void *) &g_outputMode, OUTPUT_R2,
+		"        : Output a radare2 script file"},
 	{"idcout", 'c', ARG_TYPE_INT, ARG_OPT_NONE, (void*) &g_outputMode, OUTPUT_IDC, 
 		"        : Output an IDC file (default)"},
 	{"mapout", 'a', ARG_TYPE_INT, ARG_OPT_NONE, (void*) &g_outputMode, OUTPUT_MAP, 
@@ -918,6 +922,8 @@ int main(int argc, char **argv)
 			case OUTPUT_MAP : pSer = new CSerializePrxToMap(out_fp);
 							  break;
 			case OUTPUT_IDC : pSer = new CSerializePrxToIdc(out_fp);
+							  break;
+			case OUTPUT_R2	: pSer = new CSerializePrxToR2(out_fp);
 							  break;
 			default: pSer = NULL;
 					 break;

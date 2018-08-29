@@ -18,6 +18,8 @@ prxtool_SOURCES = \
 	SerializePrxToIdc.C \
 	SerializePrxToXml.C \
 	SerializePrxToMap.C \
+	SerializePrxToR2.C \
+	NidNames.C \
 	pspkerror.C \
 	disasm.C \
 	getargs.C \
@@ -38,7 +40,9 @@ noinst_HEADERS = \
 	SerializePrxToIdc.h \
 	SerializePrxToXml.h \
 	SerializePrxToMap.h \
+	SerializePrxToR2.h \
 	VirtualMem.h \
+	NidNames.h \
 	pspkerror.h \
 	disasm.h \
 	getargs.h \
