@@ -12,6 +12,7 @@
 #include "VirtualMem.h"
 #include "output.h"
 #include "disasm.h"
+#include "NidNames.h"
 
 static const char* g_szRelTypes[16] = 
 {
@@ -182,7 +183,14 @@ int CProcessPrx::LoadSingleImport(PspModuleImport *pImport, u32 addr)
 			for(iLoop = 0; iLoop < pLib->f_count; iLoop++)
 			{
 				pLib->funcs[iLoop].nid = m_vMem.GetU32(nidAddr);
-				strcpy(pLib->funcs[iLoop].name, m_pCurrNidMgr->FindLibName(pLib->name, pLib->funcs[iLoop].nid));
+				const char *nid_name = nidGetName(pLib->funcs[iLoop].nid); // We try to get the name from the hardcoded list
+
+				if(nid_name == NULL) {
+					strcpy(pLib->funcs[iLoop].name, m_pCurrNidMgr->FindLibName(pLib->name, pLib->funcs[iLoop].nid));
+				} else {
+					strcpy(pLib->funcs[iLoop].name, nid_name);
+				}
+
 				pLib->funcs[iLoop].type = PSP_ENTRY_FUNC;
 				pLib->funcs[iLoop].addr = funcAddr;
 				pLib->funcs[iLoop].nid_addr = nidAddr;
