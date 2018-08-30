@@ -29,8 +29,8 @@ $ r2 <your bin>
 Modifications from the original
 -------------------------------
 * Added a --r2out / -2 option to output a radare2 script
-* Added a NidNames file containing all nids scraped from PPSSPP
-* This will try to resolve the nid names from the numbers if possible
+* Added a NidNames file containing all nids scraped from JPCSP
+* This will try to resolve the nid names for every backend
 
 License
 -------
